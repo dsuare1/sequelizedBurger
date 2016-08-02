@@ -1,0 +1,108 @@
+/*  colors
+
+	dark-gray: #3A3A3A
+	yellow: #FDD12D
+	soft-green: #8afd92
+	soft-orange: #e67e22
+
+*/
+
+* {
+	box-sizing: border-box;
+	/*font style*/
+}
+
+body {
+	margin: 5px;
+	background-color: #3A3A3A;
+}
+
+.top-banner {
+	border-bottom: 5px solid #FDD12D;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+button {
+	background-color: #000;
+}
+
+li {
+	margin: 15px 0;
+}
+
+h1 {
+	color: #FDD12D;
+	display: inline-block;
+	margin: 10px 50px;
+}
+
+.not-devoured-button {
+	color: #8afd92;
+}
+
+.tracker-col li {
+	color: #f1f1f1;
+}
+
+.not-devoured-col-heading {
+	color: #8afd92;
+}
+
+.devoured-col-heading {
+	color: #e67e22;
+	margin-top: 30px;
+	padding-top: 25px;
+	border-top: 5px double #FDD12D;
+}
+
+.replace-devoured-button {
+	color: #8afd92;
+}
+
+.remove-burger-button {
+	color: red;
+}
+
+.yelp-data {
+	height: 550px;
+	overflow: scroll;
+	background-color: #bdc3c7;
+	border: 10px ridge #FDD12D;
+}
+
+.yelp-header {
+	color: #f1f1f1;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.yelp-entry-name {
+	font-size: 2em;
+}
+
+.add-burger-col-header {
+	color: #2980b9;
+	border-top: 5px double #FDD12D;
+	margin-top: 30px;
+	padding-top: 25px;
+}
+
+.add-burger-section {
+	margin-left: 100px;
+}
+
+.create-burger-form {
+	color: #f1f1f1;
+	margin-left: 50px;
+}
+
+#new-burger {
+	color: #000;
+}
+
+.create-burger-button {
+	color: #2980b9;
+}

@@ -1,0 +1,87 @@
+<div class="container top-banner">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <img class="burger-icon" src="assets/img/burger.png" alt="Burger">
+      <h1>Burgers in ATX</h1>
+      <img class="burger-icon" src="assets/img/burger.png" alt="Burger">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 tracker-col">
+      <h4 class="not-devoured-col-heading">These are the burgers you haven't yet devoured:</h4>
+
+      <ul>
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <li>
+              {{this.burger_name}}
+
+              <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="true">
+                <button class="not-devoured-button" type="submit">Devour it!</button>
+              </form>
+
+            </li>
+          {{/unless}}
+        {{/each}}
+      </ul>
+    
+      <h4 class="devoured-col-heading">These are the burgers you have devoured:</h4>
+
+      <ul>
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <li>
+              {{this.burger_name}}
+
+              <form action="burgers/replace/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="false">
+                <button class="replace-devoured-button"type="submit">Re-add Burger</button>
+              </form>
+
+              <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="devoured" value="false">
+                <button class="remove-burger-button" type="submit">Remove Burger</button>
+              </form>
+              
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+
+      <h4 class="add-burger-col-header">Add your own burger;<br> be as inventive as you like!</h4>
+
+      <form class="create-burger-form" action="burgers/create" method="POST">
+
+        <div class="form-group">
+          <label for="burger-name">Burger Name:</label>
+          <input type="text" id="new-burger" name="burger_name">
+        </div>
+
+        <div class="form-group">
+          <label for="devoured">Devoured?</label><br>
+          <input type="radio" name="devoured" value="0" checked> Haven't yet Devoured...<br>
+          <input type="radio" name="devoured" value="1"> Devoured!
+        </div>
+
+        <button class="create-burger-button" type="submit">Add Burger</button>
+      </form>
+</div>
+
+<h2 class="yelp-header">Here's a list of 20 Austin restaurants (via &copy; Yelp) that serve hamburgers, with the highest rated at the top:</h2>
+    <div class="col-md-8 yelp-data">
+      <ul>
+        {{#each yelp}}
+        <li>
+        <p class="yelp-entry-name">
+          {{this.name}}
+          </p>
+          <a href="{{this.url}}" target="_blank">{{this.url}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>

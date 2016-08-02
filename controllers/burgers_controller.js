@@ -1,8 +1,6 @@
 var express = require('express');
 
-var burger = require('../models/burger.js');
-
-var yelp = require('../public/assets/js/yelp.js');
+var burger = require('../models/burgers.js');
 
 var router = express.Router();
 
@@ -13,18 +11,6 @@ router.get('/', function(req, res) {
 router.get('/burgers', function(req, res) {
     burger.selectAll(function(data) {
         var hbsObj = { burgers: data };
-                                                        // sort: 2 here sorts Yelp results
-                                                        // by ranking, with highest at top
-        yelp.search({ term: 'burgers', location: 'Austin', sort: 2 }).then(function(yelpData) {
-            // append 'yelp' key to 'hbsObj' (handlebars Object) with stores from 'yelpData.businesses'
-            hbsObj.yelp = yelpData.businesses;
-            // 'hbsObj' sent to 'index.handlebars' (which comprises the <body> of 'main.handlebars')
-            //  and rendered there with handlebars syntax (  {{ burgers: data }}  and {{ yelp.data }})
-            //  using the key value pairs established here
-            res.render('index', hbsObj);
-        }).catch(function(err) {
-            console.error(err);
-        });
     });
 });
 

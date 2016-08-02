@@ -2,6 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
+var Burger = require("./models")["burgers"]
+Burger.sync(); // creates a burgers table
+
 var app = express();
 
 // load stylesheets, imgs, etc.
